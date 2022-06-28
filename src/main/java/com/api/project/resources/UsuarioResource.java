@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.project.domain.User;
+import com.api.project.domain.Usuario;
 
 @RestController
 @RequestMapping("/user")
-public class UserResource {
+public class UsuarioResource {
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Integer id) {
-		return ResponseEntity.ok().body(new User(1, "Dionatan Leão", "dionatan@email.com", "123")); 
+	public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
+		return ResponseEntity.ok().body(new Usuario(1, "Dionatan Leão", "dionatan@email.com", "123")); 
 	}
 }
