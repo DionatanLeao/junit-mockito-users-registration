@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.api.project.domain.Usuario;
 import com.api.project.repositories.UsuarioRepository;
 import com.api.project.service.UsuarioService;
+import com.api.project.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -19,7 +20,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario findById(Integer id) {
 		Optional<Usuario> usuario = repository.findById(id);
-		return usuario.orElse(null);
+		return usuario.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
 }
