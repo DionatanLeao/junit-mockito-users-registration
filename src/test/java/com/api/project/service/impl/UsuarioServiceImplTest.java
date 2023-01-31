@@ -124,6 +124,18 @@ class UsuarioServiceImplTest {
     }
 
     @Test
+    void updateDataIntegrityViolationException() {
+        when(repository.findByEmail(anyString())).thenReturn(optionalUsuario);
+        try {
+            optionalUsuario.get().setId(2);
+            service.update(usuarioDTO);
+        } catch (Exception ex) {
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
+            assertEquals(EMAIL_CADASTRADO_NO_SISTEMA, ex.getMessage());
+        }
+    }
+
+    @Test
     void delete() {
     }
 
