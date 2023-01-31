@@ -12,7 +12,7 @@ import com.api.project.domain.Usuario;
 import com.api.project.domain.dto.UsuarioDTO;
 import com.api.project.repositories.UsuarioRepository;
 import com.api.project.service.UsuarioService;
-import com.api.project.service.exceptions.DataIntegratyViolationException;
+import com.api.project.service.exceptions.DataIntegrityViolationException;
 import com.api.project.service.exceptions.ObjectNotFoundException;
 
 @Service
@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private void findByEmail(UsuarioDTO usuarioDTO) {
 		Optional<Usuario> usuario = repository.findByEmail(usuarioDTO.getEmail());
 		if (usuario.isPresent() && !usuario.get().getId().equals(usuarioDTO.getId())) {
-			throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
+			throw new DataIntegrityViolationException("E-mail já cadastrado no sistema");
 		}
 	}
 
