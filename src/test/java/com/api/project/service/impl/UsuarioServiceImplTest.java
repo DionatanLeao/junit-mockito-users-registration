@@ -12,12 +12,12 @@ import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
@@ -53,11 +53,8 @@ class UsuarioServiceImplTest {
     @Test
     void findById() {
         when(repository.findById(anyInt())).thenReturn(optionalUsuario);
-
         Usuario response = service.findById(ID);
-
         assertNotNull(response);
-
         assertEquals(Usuario.class, response.getClass());
         assertEquals(ID, response.getId());
         assertEquals(NOME, response.getName());
@@ -68,8 +65,6 @@ class UsuarioServiceImplTest {
     void findByIdObjectNotFoundException() {
         when(repository.findById(anyInt()))
                 .thenThrow(new ObjectNotFoundException(OBJETO_NAO_ENCONTRADO));
-
-
         try {
             Usuario response = service.findById(ID);
         } catch (Exception ex) {
@@ -93,6 +88,14 @@ class UsuarioServiceImplTest {
 
     @Test
     void create() {
+        when(repository.save(any())).thenReturn(usuario);
+        Usuario response = service.create(usuarioDTO);
+        assertNotNull(response);
+        assertEquals(Usuario.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NOME, response.getName());
+        assertEquals(NOME_EMAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
     }
 
     @Test
