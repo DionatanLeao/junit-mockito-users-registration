@@ -24,13 +24,14 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class UsuarioServiceImplTest {
 
-    public static final int ID = 1;
-    public static final String NOME = "Usuario 1";
-    public static final String NOME_EMAIL = "usuario1@email.com";
-    public static final String PASSWORD = "123";
-    public static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
-    public static final int INDEX = 0;
-    public static final String EMAIL_CADASTRADO_NO_SISTEMA = "E-mail já cadastrado no sistema";
+    private static final int ID = 1;
+    private static final String NOME = "Usuario 1";
+    private static final String NOME_EMAIL = "usuario1@email.com";
+    private static final String PASSWORD = "123";
+    private static final int INDEX = 0;
+
+    private static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
+    private static final String EMAIL_CADASTRADO_NO_SISTEMA = "E-mail já cadastrado no sistema";
 
     @InjectMocks
     private UsuarioServiceImpl service;
