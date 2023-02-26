@@ -43,7 +43,7 @@ public class UsuarioResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDto) {
+	public ResponseEntity<UsuarioDTO> create(@RequestBody UsuarioDTO usuarioDto) {
 		return ResponseEntity.created(ServletUriComponentsBuilder
 				.fromCurrentRequest().path(ID)
 				.buildAndExpand(service.create(usuarioDto).getId())
