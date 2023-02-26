@@ -42,8 +42,8 @@ class UsuarioResourceTest {
     @Mock
     private ModelMapper mapper;
 
-    private Usuario usuario;
-    private UsuarioDTO usuarioDTO;
+    private Usuario usuario = new Usuario();
+    private UsuarioDTO usuarioDTO = new UsuarioDTO();
 
     @BeforeEach
     void setUp() {
