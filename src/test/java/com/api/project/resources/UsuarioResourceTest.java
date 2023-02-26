@@ -90,7 +90,16 @@ class UsuarioResourceTest {
     }
 
     @Test
-    void save() {
+    void create() {
+        when(service.create(any())).thenReturn(usuario);
+        when(mapper.map(any(), any())).thenReturn(usuarioDTO);
+
+        ResponseEntity<UsuarioDTO> response = resource.create(usuarioDTO);
+
+        assertNotNull(response);
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertNotNull(response.getHeaders().get("Location"));
     }
 
     @Test
